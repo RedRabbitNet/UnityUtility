@@ -1,0 +1,11 @@
+﻿
+#pragma kernel CSMain
+
+Texture2D<float4> image_in;
+RWTexture2D<float4> image_out;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	image_out[id.xy] = float4(image_in[id.xy].x, 0, 0, 1);
+}
